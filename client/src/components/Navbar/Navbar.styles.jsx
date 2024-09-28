@@ -5,22 +5,32 @@ import Colors from '../../helpers/Colors';
 export const StyledLink = styled(NavLink)`
   color: black;
   text-decoration: none;
-  transition: all 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
+  font-size: 1em; // Set a base font size
+  padding: 10px 15px; // Add some padding for better clickability
+  border-radius: 5px; // Rounded corners for a modern look
+
   &.active {
-    color: ${Colors.default};
+    color: ${Colors.default}; // Active link color
+    font-weight: bold; // Make active link stand out
+    background-color: rgba(12, 119, 177, 0.1); // Subtle background for active state
   }
+
   &:hover {
-    color: ${Colors.default};
+    color: ${Colors.default}; // Hover color
+    background-color: rgba(12, 119, 177, 0.1); // Subtle background on hover
   }
 `;
 
 export const Nav = styled.div`
-  padding: 0 20px 0 20px;
+  padding: 0 20px;
   border: 1px solid #dadce0;
   min-height: 70px;
   width: 100vw;
   display: flex;
   align-items: center;
+  background-color: white; // Background for the nav
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Add shadow for depth
 `;
 
 export const Li = styled.li`
@@ -42,7 +52,7 @@ export const Ul = styled.ul`
   gap: 30px;
   display: flex;
   align-items: center;
-  justify-content: right;
+  justify-content: flex-end; // Use flex-end for right alignment
   height: 100%;
   list-style: none;
   padding: 0;
@@ -51,7 +61,7 @@ export const Ul = styled.ul`
 export const Span = styled.span`
   font-size: 0.9em;
   @media (max-width: 720px) {
-    display: none;
+    display: none; // Hide on small screens
   }
 `;
 
@@ -60,6 +70,6 @@ export const Icon = styled.i`
   opacity: 0.8;
   transition: opacity 0.3s ease-in-out;
   &:hover {
-    opacity: 1;
+    opacity: 1; // Full opacity on hover
   }
 `;

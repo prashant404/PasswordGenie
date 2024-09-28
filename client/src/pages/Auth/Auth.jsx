@@ -3,24 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { TextInput, PasswordInput } from '../../components/Input/Input';
 import { useForm, FormProvider } from 'react-hook-form';
 import { validationSchema } from '../../helpers/ValidationSchemas';
-import {
-  Wrapper,
-  Form,
-  Heading,
-  SubHeading,
-  Header,
-  Span,
-  ContainerFooter,
-  Activator,
-  GoogleButton,
-  GoogleImg,
-  ErrorMsg
-} from './Auth.styles';
+import { Wrapper, Form, Heading, SubHeading, Header, Span, ContainerFooter, Activator, GoogleButton, GoogleImg, ErrorMsg } from './Auth.styles';
 import { GoogleLogin } from 'react-google-login';
 import { useDispatch } from 'react-redux';
 import { signin, signup } from '../../actions/auth';
 import Button from '../../components/Button/Button';
 import googleLogo from '../../assets/img/google-logo.png';
+import { Player } from '@lottiefiles/react-lottie-player';  // Import Lottie Player
+import animationData from '../../assets/img/Animation.json';  // Your Lottie animation file
 
 const initialState = { email: '', password: '', confirmPassword: '' };
 
@@ -44,7 +34,6 @@ const Auth = () => {
     const token = res?.tokenId;
     try {
       dispatch({ type: 'AUTH', data: { result, token } });
-
       navigate('/vault');
     } catch (error) {
       console.log(error);
@@ -56,9 +45,7 @@ const Auth = () => {
   };
 
   const validationOpt = validationSchema(isSignup);
-
   const methods = useForm(validationOpt);
-
   const { errors } = methods.formState;
 
   function onFormSubmit() {
@@ -71,12 +58,21 @@ const Auth = () => {
   }
 
   return (
-    <Wrapper>
+    <Wrapper className="auth-wrapper">
       <FormProvider {...methods}>
         <Form onSubmit={methods.handleSubmit(onFormSubmit)}>
           <Header>
-            <Heading>{isSignup ? 'Create your account' : 'Sign in into your account'}</Heading>
-            <SubHeading>Get your password secured with us</SubHeading>
+            {/* Lottie Animation */}
+            <div className="lottie-container">
+              <Player
+                autoplay
+                loop
+                src={animationData}  // The path or URL to your animation
+                className="lottie-animation"
+              />
+            </div>
+            <Heading>{isSignup ? 'Create Your Account' : 'Sign In to Your Account'}</Heading>
+            <SubHeading>Welcome to Password Genie</SubHeading>
           </Header>
           <TextInput
             onChange={handleChange}
@@ -92,7 +88,7 @@ const Auth = () => {
             name={'password'}
           />
           <ErrorMsg className="invalid-feedback">{errors.password?.message}</ErrorMsg>
-          {isSignup ? (
+          {isSignup && (
             <>
               <PasswordInput
                 onChange={handleChange}
@@ -102,13 +98,13 @@ const Auth = () => {
               />
               <ErrorMsg className="invalid-feedback">{errors.confirmPassword?.message}</ErrorMsg>
             </>
-          ) : null}
+          )}
           <ErrorMsg className="invalid-feedback">{errors.passwordConfirm?.message}</ErrorMsg>
           <ContainerFooter>
             <GoogleLogin
               render={(renderProps) => (
                 <GoogleButton onClick={renderProps.onClick} disabled={renderProps.disabled}>
-                  <GoogleImg src={googleLogo} /> Continue with Google
+                  <GoogleImg src={googleLogo} alt="Google Logo" /> Continue with Google
                 </GoogleButton>
               )}
               clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
@@ -121,7 +117,6 @@ const Auth = () => {
               content={isSignup ? 'Create Account' : 'Sign In'}
               size={'100%'}
             />
-
             <Span onClick={switchMode}>
               {isSignup ? `Already have an account?` : "Don't have an account?"}
               <Activator>{isSignup ? 'Sign In' : 'Sign Up'}</Activator>

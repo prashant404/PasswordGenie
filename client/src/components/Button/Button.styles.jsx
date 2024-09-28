@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Colors from '../../helpers/Colors';
 import { keyframes } from 'styled-components';
 
 export const StyledButton = styled.button`
@@ -10,18 +9,31 @@ export const StyledButton = styled.button`
   cursor: pointer;
   width: 100%;
   height: 50px;
-  background-color: ${Colors.default};
+  background: linear-gradient(135deg, #4e54c8, #8f94fb); /* Gradient color */
   color: white;
   font-size: 1.3em;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
   &:hover {
-    opacity: 0.8;
+    background: linear-gradient(135deg, #8f94fb, #4e54c8); /* Hover gradient */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
   }
+
+  &:active {
+    background: linear-gradient(135deg, #3e42b5, #7b81e7); /* Active gradient */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(0);
+  }
+
   &:disabled {
-    opacity: 0.8;
+    opacity: 0.6;
     cursor: not-allowed;
+    background-color: #b2b2b2; /* Disabled state color */
+    box-shadow: none;
   }
 `;
 
@@ -35,10 +47,10 @@ const spinner = keyframes`
 `;
 
 export const LoadingSpinner = styled.div`
-  width: 20px;
-  height: 20px;
-  border: 3px solid #f3f3f3;
-  border-top: 3px solid #2c9dd5;
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid white;
   border-radius: 50%;
-  animation: ${spinner} 1.5s linear infinite;
+  animation: ${spinner} 1s linear infinite;
 `;

@@ -6,37 +6,58 @@ export const InputWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  gap: 10px;
 `;
+
 export const StyledInput = styled.input`
   width: 100%;
-  padding: 10px 46.5px 10px 0;
+  padding: 12px 40px 12px 10px;
   font-size: 16px;
   outline: none;
-  border: none;
-  color: #27282c;
-  border-bottom: 1px solid #9f9f9f;
-  background-color: transparent;
-  position: relative;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  color: #333;
+  transition: all 0.3s ease-in-out;
+  
+  &:focus {
+    border-color: #0c77b1;
+    background-color: #fff;
+  }
+
+  &:hover {
+    border-color: #b0b0b0;
+  }
 `;
+
 export const Label = styled.label`
-  color: #27282c;
-  font-size: 12px;
+  color: #333;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 5px;
 `;
 
 export const IconButton = styled.i`
-  color: #9f9f9f;
+  color: #7f7f7f;
   width: 30px;
   height: 30px;
   position: absolute;
-  z-index: 200;
-  right: 5px;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: #0c77b1;
+  }
 `;
 
 export const InputContainer = styled.div`
   display: flex;
   align-items: center;
+  position: relative;
 `;
