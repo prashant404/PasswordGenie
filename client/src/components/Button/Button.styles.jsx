@@ -9,7 +9,7 @@ export const StyledButton = styled.button`
   cursor: pointer;
   width: 100%;
   height: 50px;
-  background: linear-gradient(135deg, #4e54c8, #8f94fb); /* Gradient color */
+  background: linear-gradient(135deg, #4e54c8, #8f94fb);
   color: white;
   font-size: 1.3em;
   border: none;
@@ -18,13 +18,13 @@ export const StyledButton = styled.button`
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
   &:hover {
-    background: linear-gradient(135deg, #8f94fb, #4e54c8); /* Hover gradient */
+    background: linear-gradient(135deg, #8f94fb, #4e54c8); 
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
     transform: translateY(-2px);
   }
 
   &:active {
-    background: linear-gradient(135deg, #3e42b5, #7b81e7); /* Active gradient */
+    background: linear-gradient(135deg, #3e42b5, #7b81e7); 
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     transform: translateY(0);
   }
@@ -32,7 +32,7 @@ export const StyledButton = styled.button`
   &:disabled {
     opacity: 0.6;
     cursor: not-allowed;
-    background-color: #b2b2b2; /* Disabled state color */
+    background-color: #b2b2b2;
     box-shadow: none;
   }
 `;

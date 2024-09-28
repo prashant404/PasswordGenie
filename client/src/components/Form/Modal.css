@@ -24,7 +24,6 @@
   opacity: 0;
 }
 
-// Overlay for the modal with smoother opacity transition
 .overlay-base {
   display: flex;
   justify-content: center;
